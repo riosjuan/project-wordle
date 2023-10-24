@@ -7,14 +7,7 @@ const Cell = ({ letter, status }) => {
 };
 
 function Guess({ value, answer }) {
-  let guess = '';
-
-  if (value !== undefined) {
-    const arrayFromValue = Object.values(value);
-    guess = arrayFromValue[0];
-  }
-
-  const checkedGuess = checkGuess(guess, answer);
+  const checkedGuess = checkGuess(value, answer);
 
   return (
     <p className='guess'>
