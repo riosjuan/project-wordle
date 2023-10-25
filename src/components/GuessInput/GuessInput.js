@@ -1,12 +1,12 @@
 import React from 'react';
 
-function GuessInput({ guessesHandler }) {
+function GuessInput({ submitGuessesHandler, gameStatus }) {
   const [guessWord, setGuessWord] = React.useState('');
 
   const inputHandler = (event) => setGuessWord(event.target.value.toUpperCase());
   const submitHandler = (event) => {
     event.preventDefault();
-    guessesHandler(guessWord);
+    submitGuessesHandler(guessWord);
     setGuessWord('');
   };
 
@@ -15,6 +15,7 @@ function GuessInput({ guessesHandler }) {
       <label htmlFor='guess-input'>Enter guess:</label>
       <input
         required
+        disabled={gameStatus !== 'running'}
         id='guess-input'
         type='text'
         pattern='[A-Za-z]{5}'
